@@ -87,3 +87,21 @@ def delete_todo(todo_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Todo deleted successfully"}
+
+
+@app.patch("/todos/{todo_id}/star", response_model=TodoResponse)
+def toggle_star(todo_id: int, db: Session = Depends(get_db)):
+    todo = db.query(Todo).filter(Todo.id == todo_id).first()
+
+    if todo is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Todo not found"
+        )
+
+    todo.starred = not todo.starred
+
+    db.commit()
+    db.refresh(todo)
+
+    return todo

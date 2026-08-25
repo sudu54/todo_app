@@ -9,3 +9,4 @@ class Todo(Base):
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
     completed = Column(Boolean, default=False)
+    starred = Column(Boolean, default=False)

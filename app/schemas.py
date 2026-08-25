@@ -11,6 +11,7 @@ class TodoResponse(BaseModel):
     title: str
     description: str | None
     completed: bool
+    starred: bool
 
     class Config:
         from_attributes = True
