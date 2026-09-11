@@ -2,4 +2,4 @@ fastapi
 uvicorn[standard]
 sqlalchemy
 python-jose[cryptography]
-pwdlib
+pwdlib[argon2]
